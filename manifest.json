@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Chat TL;DR",
+  "description": "Summarize recent WhatsApp Web chats using Gemini AI",
+  "version": "0.1.0",
+  "icons": {
+    "48": "icons/tldr-logo-48.png",
+    "128": "icons/tldr-logo-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/tldr-logo-48.png",
+      "128": "icons/tldr-logo-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
